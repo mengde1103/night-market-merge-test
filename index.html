@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#91d3e7">
+  <title>夜市小摊：合成大排档</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <section id="launch-screen" class="screen launch-screen" aria-label="夜市开张启动页">
+    <div class="launch-lanterns" aria-hidden="true"><span>🏮</span><span>🏮</span><span>🏮</span></div>
+    <div class="launch-stall" aria-hidden="true"><div class="launch-sign">夜市<br>开张</div><span>🍢</span><span>🥘</span><span>🧋</span></div>
+    <p class="launch-kicker">NIGHT MARKET · ORIGINAL DEMO</p>
+    <h1>夜市小摊<br><em>合成大排档</em></h1>
+    <p class="launch-copy">把今晚的烟火气，合成给每一位客人。</p>
+    <div class="launch-loading"><i id="launch-progress"></i></div>
+    <button class="launch-enter" type="button" data-screen="map">进入夜市</button>
+  </section>
+
+  <section id="map-screen" class="screen map-screen is-hidden" aria-label="夜市地图主页">
+    <header class="map-hud"><button class="map-profile" type="button" data-screen="game"><span>🏮</span><b>夜市 1 号摊</b></button><div><span>⚡ <b id="map-energy">8/10</b></span><span>🪙 <b id="map-coins">30</b></span></div></header>
+    <div class="map-title"><p>第 <span id="map-day">1</span> 天 · 晚风集市</p><h1>今晚，去哪一摊忙活？</h1></div>
+    <div class="market-map" aria-label="原创夜市地图">
+      <button class="map-stall active" type="button" data-screen="game"><span>🍢</span><strong>烧烤小摊</strong><small>经营中</small></button>
+      <button class="map-stall activity" type="button" data-screen="festival"><span>🧺</span><strong>夜市赶集</strong><small>收集食材图鉴</small><i>新活动</i></button>
+      <button class="map-stall locked" type="button" disabled><span>🧋</span><strong>奶茶摊</strong><small>摊位 3 级解锁</small></button>
+      <button class="map-stall locked" type="button" disabled><span>🍰</span><strong>甜品摊</strong><small>后续开放</small></button>
+    </div>
+    <div class="map-notice"><span>📣</span><p>完成顾客订单可以推进“夜市赶集”收集进度。</p><button type="button" data-screen="festival">查看活动</button></div>
+    <nav class="map-nav"><button type="button" data-screen="game">🧰<small>经营</small></button><button class="selected" type="button">🗺️<small>夜市</small></button><button type="button" data-screen="festival">🎪<small>活动</small></button></nav>
+  </section>
+
+  <section id="festival-screen" class="screen festival-screen is-hidden" aria-label="夜市赶集活动页">
+    <header class="festival-head"><button type="button" data-screen="map">‹</button><div><p>限时主题活动</p><h1>夜市赶集</h1></div><button type="button" data-screen="game">去经营</button></header>
+    <div class="festival-hero"><span aria-hidden="true">🧺</span><div><strong>今晚的食材清单</strong><p>交付订单，点亮夜市赶集图鉴。</p></div></div>
+    <section class="festival-reward"><div class="festival-reward-title"><strong>赶集进度</strong><span id="festival-progress">0 / 4</span></div><div class="festival-track"><i id="festival-fill"></i></div><div class="festival-prizes"><span>🍢<small>1 单</small></span><span>⚡<small>2 单</small></span><span>🪙<small>4 单</small></span></div><button id="festival-claim" type="button" disabled>完成 4 笔订单后领取 40 金币</button></section>
+    <section class="collection-book"><div class="collection-heading"><div><p>夜市图鉴</p><h2>赶集食材集</h2></div><span id="collection-count">0 / 9</span></div><div class="collection-grid"><article>🥩<small>鲜肉箱</small></article><article>🌶️<small>香料铺</small></article><article>🥬<small>青菜摊</small></article><article>🍢<small>烤串架</small></article><article>🫓<small>主食铺</small></article><article>🧋<small>饮品车</small></article><article>🍱<small>拼盘台</small></article><article>🥘<small>夜宵锅</small></article><article>🎁<small>惊喜箱</small></article></div></section>
+    <p class="festival-tip">每完成一笔顾客订单，即可点亮一枚图鉴印章。活动奖励为原型演示金币，不涉及真实付费或会员资格。</p>
+  </section>
+
+  <main id="game-screen" class="screen game-shell is-hidden" aria-label="夜市小摊合成经营游戏">
+    <header class="hud">
+      <button class="back-map-button" type="button" data-screen="map" aria-label="返回夜市地图">‹</button>
+      <div class="stall-profile" aria-label="夜市摊位信息">
+        <span class="stall-avatar" aria-hidden="true">🏮</span>
+        <div><strong>夜市 1 号摊</strong><small>第 <span id="day-value">1</span> 天开张</small></div>
+      </div>
+      <div class="resource-pills" aria-label="游戏资源">
+        <div class="resource-pill energy"><span aria-hidden="true">⚡</span><strong id="energy-value">8/10</strong></div>
+        <div class="resource-pill coin"><span aria-hidden="true">🪙</span><strong id="coin-value">30</strong></div>
+        <div class="resource-pill stall"><span aria-hidden="true">🏮</span><strong id="stall-value">1</strong></div>
+      </div>
+      <button id="open-game-menu" class="hud-menu" type="button" aria-label="打开经营菜单">☰</button>
+    </header>
+
+    <section class="market-banner" aria-labelledby="market-title">
+      <div class="lantern" aria-hidden="true">🏮</div>
+      <div><p>夜市开摊中</p><h1 id="market-title">合成食材，招待今晚的客人</h1></div>
+      <button id="legacy-reset-button" class="reset-button" type="button" aria-label="清除本地游戏进度">↻</button>
+    </section>
+
+    <section class="daily-task" aria-label="今日开摊任务">
+      <div class="task-badge" aria-hidden="true">📋</div>
+      <div class="task-content">
+        <div class="task-title"><strong>今日开摊任务</strong><span id="task-progress">0 / 4</span></div>
+        <div class="task-track"><i id="task-fill"></i></div>
+        <small id="task-copy">完成 4 笔顾客订单，领取夜市补给。</small>
+      </div>
+      <button id="task-claim-button" class="task-claim" type="button" disabled>🪙 25</button>
+    </section>
+
+    <section class="orders-section" aria-label="夜市摊位与顾客点单">
+      <div id="stall-scene" class="stall-scene level-1">
+        <div class="stall-awning"><span>🏮</span><strong id="stall-scene-title">1级 · 烧烤小摊</strong><span>🏮</span></div>
+        <div class="stall-counter"><span class="primary-grill">🔥</span><span id="stall-menu-items">🍢 烤肉串</span><span class="stall-cook">👨‍🍳</span></div>
+        <div id="device-rack" class="device-rack" aria-label="食材生产设备"></div>
+        <div class="scene-upgrade-props" aria-hidden="true"><span class="string-lights">✨ ✨ ✨</span><span class="second-grill">🔥</span><span class="display-case">▦</span></div>
+        <div id="customer-queue" class="customer-queue" aria-label="正在点单的顾客"></div>
+      </div>
+    </section>
+
+    <section class="board-section" aria-labelledby="board-title">
+      <div class="section-heading compact">
+        <div><p class="eyebrow">夜市备货台</p><h2 id="board-title">合成食材</h2></div>
+        <span id="board-count" class="board-count">0 / 64</span>
+      </div>
+      <p class="instruction">点击空格补货；连续点击两个同等级食材，即可合成更高级的夜市料理。</p>
+      <div id="game-board" class="game-board" role="grid" aria-label="8乘8食材操作台"></div>
+    </section>
+
+    <section class="item-inspector" aria-live="polite">
+      <div class="inspector-icon" id="selected-icon" aria-hidden="true">🔎</div>
+      <p id="selection-hint">点击食材查看操作提示，或点击空格进行补货。</p>
+      <span class="inspector-stamp">夜市手册</span>
+    </section>
+
+    <section class="actions" aria-label="经营操作">
+      <button id="restock-button" class="action-button restock" type="button"><span>🧊</span><strong>肉箱备货</strong><small>产出鲜肉串 · 1 体力</small></button>
+      <button id="upgrade-button" class="action-button upgrade" type="button"><span>🧰</span><strong>升级摊位</strong><small id="upgrade-cost">40 金币</small></button>
+      <button id="open-game-menu-action" class="action-button welfare" type="button"><span>☰</span><strong>更多</strong><small>任务与福利</small></button>
+    </section>
+
+    <section class="welfare-sheet" aria-labelledby="welfare-title">
+      <div class="sheet-head"><div><p class="eyebrow">自选福利</p><h2 id="welfare-title">看完视频再领奖励</h2></div><span>原型模拟</span></div>
+      <div class="ad-actions">
+        <button class="ad-button" type="button" data-ad-type="double"><b>×2</b><span>高价订单报酬</span><small data-ad-count="double"></small></button>
+        <button class="ad-button" type="button" data-ad-type="crate"><b>🍢</b><span>直接获得烤肉串</span><small data-ad-count="crate"></small></button>
+      </div>
+    </section>
+
+    <footer>
+      <span>原创夜市经营原型 · 进度保存在当前浏览器</span>
+      <a href="../docs/GAME_DESIGN.md" target="_blank" rel="noreferrer">查看策划</a>
+    </footer>
+  </main>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <section id="game-menu-modal" class="game-menu-modal" hidden aria-label="经营菜单">
+    <div class="game-menu-panel">
+      <button id="close-game-menu" class="menu-close" type="button" aria-label="关闭菜单">×</button>
+      <p class="eyebrow">夜市工具箱</p><h2>经营菜单</h2>
+      <button class="menu-item" type="button" data-ad-type="energy"><span>⚡</span><b>补充 3 点体力</b><small data-ad-count="energy">0/3 次</small></button>
+      <button class="menu-item" type="button" data-ad-type="double"><span>×2</span><b>高价订单双倍</b><small data-ad-count="double">0/5 次</small></button>
+      <button class="menu-item" type="button" data-ad-type="crate"><span>🍢</span><b>获得烤肉串</b><small data-ad-count="crate">0/3 次</small></button>
+      <button class="menu-item" type="button" data-screen="map"><span>🗺️</span><b>返回夜市地图</b><small>查看摊位与其他区域</small></button>
+      <button class="menu-item" type="button" data-screen="festival"><span>🎪</span><b>查看夜市赶集</b><small>图鉴与任务奖励</small></button>
+      <button id="menu-reset-button" class="menu-item danger" type="button"><span>↻</span><b>清除本地进度</b><small>不可恢复，请谨慎操作</small></button>
+    </div>
+  </section>
+  <script src="app.js"></script>
+</body>
+</html>

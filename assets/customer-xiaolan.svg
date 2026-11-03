@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">夜市顾客小岚</title>
+  <desc id="desc">戴橙色针织帽、穿绿色外套的原创卡通夜市顾客头像</desc>
+  <circle cx="64" cy="64" r="60" fill="#f8d786" stroke="#75402f" stroke-width="6"/>
+  <path d="M25 122c5-27 19-39 39-39s34 12 39 39" fill="#76a66d" stroke="#75402f" stroke-width="6" stroke-linejoin="round"/>
+  <path d="M37 63c0-27 12-42 28-42s27 15 27 42v23H37z" fill="#4c3836" stroke="#75402f" stroke-width="6" stroke-linejoin="round"/>
+  <path d="M31 47c1-23 16-35 34-35 19 0 32 12 34 35l-10 5H40z" fill="#ea8b4b" stroke="#75402f" stroke-width="6" stroke-linejoin="round"/>
+  <path d="M39 39c11-7 38-8 51 0" fill="none" stroke="#ffd67d" stroke-width="5" stroke-linecap="round"/>
+  <circle cx="65" cy="18" r="8" fill="#ffd67d" stroke="#75402f" stroke-width="5"/>
+  <path d="M45 51c1-13 8-20 20-20s19 7 20 20v23c0 17-9 27-20 27S45 91 45 74z" fill="#ffdab7" stroke="#75402f" stroke-width="5"/>
+  <path d="M43 56c4-10 12-15 22-15s18 5 23 15" fill="#4c3836"/>
+  <path d="M54 66h3M73 66h3" stroke="#75402f" stroke-width="5" stroke-linecap="round"/>
+  <path d="M60 79c3 3 7 3 10 0" fill="none" stroke="#c9655c" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="49" cy="76" r="6" fill="#f3a4a1" opacity=".8"/>
+  <circle cx="81" cy="76" r="6" fill="#f3a4a1" opacity=".8"/>
+  <path d="M45 111c7-7 31-7 40 0" fill="none" stroke="#d8efd1" stroke-width="5" stroke-linecap="round"/>
+  <path d="M32 107l12 7-4 8M96 107l-12 7 4 8" fill="#e9f1d6" stroke="#75402f" stroke-width="4" stroke-linejoin="round"/>
+</svg>
